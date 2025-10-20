@@ -1,12 +1,24 @@
-# Event-RGB-ReID
+# Event-RGB-ReID (ASP-DAC 2026)
 
-We store the event-image binary arrays in `.npy` files, where the red and blue channels represent brightness-increase and brightness-decrease events, respectively.
+This repository contains the official implementation for our paper **"Video-based Visible-Event Cross-modal Person Re-identification for Edge AI Surveillance Systems"** accepted by ASP-DAC 2026. We introduce a novel cross-modal task that matches identities across RGB and event camera modalities, proposing a method that constructs auxiliary modalities using frequency information to achieve significant improvements over existing methods.
+
+![Method Overview](img/intro-setting.png)
+
+## Environment Setup
+
+```bash
+conda create -n event python=3.9
+conda activate event
+pip install -r requirements.txt
+```
 
 ## Data Processing
 
+We store the event-image binary arrays in `.npy` files, where the red and blue channels represent brightness-increase and brightness-decrease events, respectively.
+
 ### PRID2011
 
-The PRID2011 dataset used in this project is sourced from the [SDCL repository by Chengzhi Cao](https://github.com/Chengzhi-Cao/SDCL).
+The PRID2011 dataset used in this project is sourced from the [SDCL repository](https://github.com/Chengzhi-Cao/SDCL).
 
 After downloading the raw data, we perform filtering and split the remaining identities into training and testing subsets. The lists of identities for each split are provided in `data/PRID2011/train.json` and `data/PRID2011/test.json`.
 
@@ -27,7 +39,7 @@ The MARS dataset is obtained from the [official evaluation repository](https://g
 
 Following the official processing script, the RGB frames for each tracklet are stored under a folder hierarchy such as `data/mars/bbox_train/0001/C1/T0001/F001.jpg`. Create an additional `rgb` folder for every identity to hold the raw RGB images, resulting in paths like `data/mars/bbox_train/0001/rgb/C1/T0001/F001.jpg`.
 
-Convert the RGB frames to the event-image representation with [v2e](https://github.com/SensorsINI/v2e) using the default parameter settings. Save the converted frames in a sibling `event` directory that mirrors the RGB structure, for example `data/mars/bbox_train/0001/npy/C1/T0001/F001.npy`.
+Convert the RGB frames to the event-image representation with [v2e](https://github.com/SensorsINI/v2e) using the default parameter settings. Save the converted frames in a sibling `npy` directory that mirrors the RGB structure, for example `data/mars/bbox_train/0001/npy/C1/T0001/F001.npy`.
 
 The predefined training and testing splits are provided in `data/mars/train.json` and `data/mars/test.json`.
 
@@ -68,4 +80,23 @@ data/
     │   └── Test/
     ├── train.json
     └── test.json
+```
+
+## Training
+
+Run the training scripts for different datasets:
+
+### PRID2011
+```bash
+bash scripts/PRID.sh
+```
+
+### VCM-HITSZ
+```bash
+bash scripts/VCM.sh
+```
+
+### MARS
+```bash
+bash scripts/MARS.sh
 ```
