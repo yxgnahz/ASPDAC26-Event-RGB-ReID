@@ -100,3 +100,16 @@ bash scripts/VCM.sh
 ```bash
 bash scripts/MARS.sh
 ```
+
+## Citation
+
+If you find this work useful, please cite our paper:
+
+```bibtex
+@inproceedings{zhang2026video,
+  title = {Video-based Visible-Event Cross-modal Person Re-identification for Edge AI Surveillance Systems},
+  author = {Xinyun Zhang and Zixiao Wang and Yurui Kuang and Bei Yu},
+  booktitle = {Proceedings of the 31st Asia and South Pacific Design Automation Conference},
+  year = {2026},
+}
+```
