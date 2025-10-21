@@ -18,9 +18,9 @@ We store the event-image binary arrays in `.npy` files, where the red and blue c
 
 ### Event Camera Image Data Generation
 
-Event data is generated from RGB images using the v2e tool, producing DVS_TEXT files that contain timestamps, pixel coordinates, and polarity of brightness changes. For a given time window, the brightness changes at each pixel are accumulated to produce the final event image.
+Event data is generated from RGB images using the [v2e](https://github.com/SensorsINI/v2e), producing DVS_TEXT files that contain timestamps, pixel coordinates, and polarity of brightness changes. For a given time window, the brightness changes at each pixel are accumulated to produce the final event image.
 
-The script hitsz/mars_gen.py, which should be placed in the v2e tool directory by default, is used to generate the event data for the HITSZ dataset.
+The script hitsz/mars_gen.py, which should be placed in the [v2e](https://github.com/SensorsINI/v2e) directory by default, is used to generate the event data for the HITSZ dataset.
 
 ### PRID2011
 
