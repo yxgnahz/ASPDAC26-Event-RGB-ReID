@@ -16,6 +16,10 @@ pip install -r requirements.txt
 
 We store the event-image binary arrays in `.npy` files, where the red and blue channels represent brightness-increase and brightness-decrease events, respectively.
 
+### Event Camera Image Data Generation
+
+Event data is generated from RGB images using the v2e tool, producing DVS_TEXT files that contain timestamps, pixel coordinates, and polarity of brightness changes. For a given time window, the brightness changes at each pixel are accumulated to produce the final event image.
+
 ### PRID2011
 
 The PRID2011 dataset used in this project is sourced from the [SDCL repository](https://github.com/Chengzhi-Cao/SDCL).
@@ -64,6 +68,8 @@ data/
 The VCM-HITSZ dataset can be obtained from the [official project repository](https://github.com/VCM-project233/HITSZ-VCM-data). After downloading, place the contents under `data/VCM-HITSZ` with the three provided folders: `Train`, `Test`, and `info`.
 
 Create an additional directory `data/VCM-HITSZ/VCM_event` to store the event-domain samples. Convert each RGB image to the event representation with [v2e](https://github.com/SensorsINI/v2e) using the default parameters, and mirror the original hierarchy beneath `VCM_event`. For instance, an RGB frame located at `data/VCM-HITSZ/Train/0004/rgb/D2/6.jpg` should produce the event file `data/VCM-HITSZ/VCM_event/Train/0004/npy/D2/0006.npy`.
+
+For the VCM-HITSZ dataset, since the original images may have different sizes, they should be resized to a predefined resolution before conversion with v2e.
 
 We provide pre-defined splits in `data/VCM-HITSZ/train.json` and `data/VCM-HITSZ/test.json`.
 
